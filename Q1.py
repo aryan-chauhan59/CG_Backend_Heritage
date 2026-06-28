@@ -1,22 +1,51 @@
-# 1. Employee Salary Breakdown Calculator Take employee name, basic salary, HRA %, and Bonus % as input.
-# Calculate:HRA Amount ,Bonus Amount,Gross Salary,
-# Display the result using formatted f-strings.
+# Complete stack implementation using list in python.
+
+class Stack:
+    def __init__(self):
+        self._data = []
+
+    def push(self, item):
+        self._data.append(item)
+
+    def pop(self):
+        if self.is_empty():
+            raise IndexError("pop from an empty stack")
+        return self._data.pop()
+
+    def peek(self):
+        if self.is_empty():
+            raise IndexError("peek from an empty stack")
+        return self._data[-1]
+
+    def is_empty(self):
+        return len(self._data) == 0
+
+    def size(self):
+        return len(self._data)
+
+    def __repr__(self):
+        if self.is_empty():
+            return "Stack: [EMPTY]"
+        return f"Stack [bottom→top]: {self._data}"
 
 
-print("Employee Salary Calculator")
+book_stack = Stack()
 
-name = input("Enter employee name: ")
-basic_salary = float(input("Enter basic salary: "))
-hra_percent = float(input("Enter HRA percentage: "))
-bonus_percent = float(input("Enter Bonus percentage: "))
+book_stack.push("Python Basics")
+book_stack.push("Data Structures")
+book_stack.push("Algorithms")
+book_stack.push("System Design")
+book_stack.push("Clean Code")
 
-hra_amount = (hra_percent / 100) * basic_salary
-bonus_amount = (bonus_percent / 100) * basic_salary
-gross_salary = basic_salary + hra_amount + bonus_amount
+print(book_stack)
+print(f'Total books stacked: {book_stack.size()}')
+print(f'Top book right now: {book_stack.peek()}')
 
-print("\nSalary Breakdown ")
-print(f"Employee Name: {name}")
-print(f"Basic Salary: ${basic_salary:.2f}")
-print(f"HRA Amount: ${hra_amount:.2f}")
-print(f"Bonus Amount: ${bonus_amount:.2f}")
-print(f"Gross Salary: ${gross_salary:.2f}")
+print(f'\n Removing books one by one (LIFO)')
+removed = book_stack.pop()
+print(f'Removed: {removed:<20} | Stack size: {book_stack.size()}')
+
+removed = book_stack.pop()
+print(f'Removed: {removed:<20} | Stack size: {book_stack.size()}')
+
+print(f'\nRemaining: {book_stack}')
