@@ -1,19 +1,15 @@
-# Mobile Recharge Bill Generator
+# Analyze the time and space complexity of finding the maximum value in a list.
 
-print("--- Mobile Recharge Bill Generator ---")
+def find_maximum(numbers):
+    if not numbers:
+        return None
+    max_val = numbers[0]
+    
+    for num in numbers:
+        if num > max_val:
+            max_val = num 
+            
+    return max_val
 
-# Getting inputs
-customer_name = input("Enter Customer Name: ")
-mobile_number = input("Enter Mobile Number: ")
-recharge_amount = float(input("Enter Base Recharge Amount: ₹"))
-
-gst_amount = recharge_amount * 0.18  
-total_payable = recharge_amount + gst_amount
-
-print("\n--- Payment Receipt ---")
-print(f"Customer: {customer_name}")
-print(f"Mobile No: {mobile_number}")
-print(f"Base Recharge: ₹{recharge_amount:.2f}")
-print(f"GST (18%): ₹{gst_amount:.2f}")
-print("-" * 25)
-print(f"Total Payable: ₹{total_payable:.2f}")
+scores = [45, 12, 89, 33, 91, 7]
+print(f"The maximum value is: {find_maximum(scores)}")
